@@ -1,5 +1,8 @@
 # ineedhelp
 
+the issue:
+the user logs in, but user_id never registered with project
+
 The flow I am intending:
 
 1. the user logins in with their google account.
