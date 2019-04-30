@@ -1,0 +1,164 @@
+/* set box-sizing HTML element to border-box (padding+border are therefore considered in total height+width)*/
+
+@charset "utf-8";
+
+p {
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+h2 {
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+h3 {
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+h4 {
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+a:hover {
+    color: rgba(255,255,255,1.00);
+}
+
+/* grid for page content*/
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-auto-flow: minmax(100px, auto);
+    grid-gap: 1em;
+    grid-auto-rows: minmax(100px, auto);
+}
+.wrapper > div {
+    padding: 1em;
+}
+
+.header {
+    /* box one -- header */
+    grid-column: 1/3;
+    background: lightgrey !important;
+}
+
+.nestedHeader {
+    /* nested areas for header content */
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background: white !important;
+    padding: 1em;
+}
+
+.nestedHeader > div {
+    border:#333 1px solid;
+    padding:1em;
+}
+
+.nestedHeader a:link, a:visited {
+    background-color: white;
+    color: lightsalmon;
+    padding: 1em;
+    padding-right: 2em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 50%;
+    height: 50%;
+}
+
+.nestedHeader a:hover, a:active {
+    background-color: lightgrey;
+}
+
+.sidebar {
+    /* navigation sidebar */
+    background: darkgrey !important;
+}
+
+.nestedSidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    background: lightgrey !important;
+    padding: 1em;
+    grid-gap: 1em;
+    text-align: center;
+}
+
+.nestedMenuNav {
+    background-color: black !important;
+    color: white;
+}
+
+.nestedMenuNavTitle {
+    background-color: white !important;
+    color: black;
+}
+
+.sidebar a:link, a:visited {
+    background-color: white;
+    color: lightsalmon;
+    padding: 1em;
+    padding-right: 2em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 66%;
+}
+
+.sidebar a:hover, a:active {
+    background-color: darkgrey;
+}
+
+.backToTop {
+    border:#333 1px solid;
+    padding:1em;
+    text-align: center;
+    color: black;
+    background: white;
+}
+
+.content {
+    /* navigation sidebar */
+    background: white;
+}
+
+.menuTitles {
+    grid-column: 1/4;
+    grid-auto-rows: minmax(100px, auto);
+    color: black;
+    background: white;
+}
+
+.menuTitles > div {
+    border:#333 1px solid !important;
+    padding:1em;
+    text-align: center !important;
+}
+
+.backToTop {
+    grid-column: 1/4;
+    border:#333 1px solid;
+    padding:1em;
+    text-align: center;
+    color: black;
+    background: white;
+}
+
+.backToTop a:link, a:visited {
+    background-color: white;
+    color: lightsalmon;
+    padding: 1em;
+    padding-right: 2em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 66%;
+}
+
+.backToTop a:hover, a:active {
+    background-color: darkgrey;
+}
+
+.footer {
+    grid-column: 1/3;
+    background: lightgrey !important;
+}

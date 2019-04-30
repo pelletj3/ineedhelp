@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta charset="UTF-8">
+ <title>Tommy's Tacos</title>
+ <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<body>
+<div class="wrapper">
+ <div class="header">
+   <div class="nestedHeader">
+     <div><h2>Tommy's Tacos</h2></div>
+     <div><h3></h3></div>
+     <div>
+       <a href="/gdisconnect" onclick="signOut();">Sign out</a>
+       <script>
+       function signOut() {auth2.signOut().then(function() {console.log('User signed out.');
+         });
+       }
+       </script>
+     </div>
+   </div>
+ </div>
+ <div class="sidebar">
+   <div class="nestedSidebar">
+   <div><a href="index" title="home"><b>Home</b></a></div>
+   <div><a href="menu" title="menu"><b>Menu</b></a></div>
+   <div><a href="aboutUs" title="Link"><b>About us</b></a></div>
+   <div><a href="contactUs" title="Link"><b>Contact us</b></a></div>
+   <div class="nestedMenuNav"><h2>Menu</h2>
+     {% with messages = get_flashed_messages() %}
+       {% if messages %}
+         {% for message in messages %}
+           <strong>{{ message }}</strong>
+         {% endfor %}
+       {% endif %}
+     {% endwith %}
+     <br>
+     {% for cat in category %}
+       <h2 class="nestedMenuNavTitle">{{cat.name}}</h2>
+       <a href="{{url_for('newMenuItem', category_id=cat.id )}}">Create New {{ cat.name }} Item</a>
+     {% endfor %}
+   </div>
+   </div>
+   </div>
+   <div class="content" id="top">
+     {% for cat in category %}
+       <div class="menuTitles">
+         <div><h2>{{ cat.name }}</h2></div>
+       </div>
+       <p>
+       {% for item in items %}
+         {% if item.category_id == cat.id %}
+         <div>
+           <h4>{{ item.name }}</h4></br>Price:{{ item.price }}</br>{{ item.description }}</br>{{ item.user_id}}</br>
+           <a href="{{url_for('editMenuItem', category_id=cat.id, item_id=item.id)}}">
+           </br>Edit {{ item.name }}</a></br>
+           <a href="{{url_for('deleteMenuItem', category_id=cat.id, item_id=item.id)}}">
+           </br>Delete {{ item.name }}</a></br></br></br>
+         </div>
+         {% endif %}
+       {% endfor %}
+       </p>
+       </br>
+       {% endfor %}
+       <div class="backToTop">
+         <div><a href="#top" title="backtotop"><b>Back to top</b></a></div>
+       </div>
+    </div>
+    <div class="footer">
+    <h4>Tommy's Tacos</h4><p>1234 Main Street<br>Springfield, USA<br>(555) 555-5555</p>
+    </div>
+</div>
+</body>
+</html>

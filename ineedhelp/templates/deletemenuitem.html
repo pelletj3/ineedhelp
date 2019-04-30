@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Tommy's Tacos</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+  <h1> Are you sure you want to delete {{item.name}}? </h1>
+  <form action="{{ url_for('deleteMenuItem', category_id=item.category_id, item_id=item.id)}}" method = 'post'>
+    <input type='submit', value = 'Delete'>
+  </form>
+  <a href = "{{ url_for('restaurantMenu')}}"> Cancel </a>
+</body>
+</html>

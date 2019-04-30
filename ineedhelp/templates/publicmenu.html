@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Tommy's Tacos</title>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <div class="nestedHeader">
+      <div><h2>Tommy's Tacos</h2></div>
+      <div><h3>"The best Mexican food in Springfield."</h3></div>
+      <div><h3><a href="{{url_for('showLogin')}}">Login </a></h3></div>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="nestedSidebar">
+      <div><a href="index" title="home"><b>Home</b></a></div>
+      <div><a href="menu" title="menu"><b>Menu</b></a></div>
+      <div><a href="aboutUs" title="Link"><b>About us</b></a></div>
+      <div><a href="contactUs" title="Link"><b>Contact us</b></a></div>
+      <div class="nestedMenuNav"><h2>Menu</h2>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <strong>{{ message }}</strong>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <br>
+        {% for cat in category %}
+        <h2 class="nestedMenuNavTitle">{{cat.name}}</h2>
+        {% endfor %}
+       </div>
+      </div>
+    </div>
+    <div class="content" id="top">
+      {% for cat in category %}
+        <div class="menuTitles">
+            <div><h2>{{ cat.name }}</h2></div>
+        </div>
+        <p></p>
+        {% for item in items %}
+          {% if item.category_id == cat.id %}
+            <div>
+              <h4>{{ item.name }}</h4>Price:{{ item.price }}</br>{{ item.description }}</br>
+            </div>
+          {% endif %}
+        {% endfor %}
+        </br>
+      {% endfor %}
+    <div class="backToTop">
+      <div><a href="#top" title="backtotop"><b>Back to top</b></a></div>
+    </div>
+    </div>
+  <div class="footer">
+    <h4>Tommy's Tacos</h4><p>1234 Main Street<br>Springfield, USA<br>(555) 555-5555</p>
+  </div>
+</div>
+</body>
+</html>
